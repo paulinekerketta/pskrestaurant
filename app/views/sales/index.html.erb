@@ -1,0 +1,33 @@
+<h2><b>Sale's Index Page</b></h2>
+
+
+<h4><%= link_to "New Entry", new_sale_path, :class => 'navbar-link'  %></h4>
+<br>
+<p>
+
+<%= form_tag(sales_path, method: :get) do %>
+
+<div>Select Day
+ <%= select_tag :search_day, options_for_select(1..30,5) %></div><br>
+<div>Select Month
+ <%= select_tag :search_month, options_for_select(1..12,5) %></div><br>
+ <%= submit_tag 'Submit ', name: nil %>
+
+<% end %>
+</p>
+ <% @sales.each do |sale| %>
+
+<br><p><strong>Date: <%= sale.day %>.<%= sale.month %></strong></p>
+<p>Outdoor Sales Report</p><p>
+   <strong>Outdoor Sales: </strong> <%= sale.out_sales %><br />  
+   <strong>Collections Earned from Outdoor :</strong> <%= sale.out_collection %><br /><br /></p>
+
+   <p>Indoor Sales Report</p><p>
+   <strong>Indoor Sales :</strong> <%= sale.in_sales %><br />
+   <strong>Collections Earned from Indoor :</strong><%= sale.in_collection %><br />
+   
+   
+   
+   <% end %>
+</p>
+<hr />

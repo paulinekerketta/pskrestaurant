@@ -1,0 +1,52 @@
+<center><h1>Time Stamp</h1>
+
+<font size="4" color="red"><%= flash[:message] %></font><br>
+
+
+<%= form_for @driver do |f| %>
+
+       <% if @driver.errors.any? %>
+                 <div id="error_explanation" class="field_with_errors">
+                 <h2><%= pluralize(@driver.errors.count, "error") %> prohibited this driver from being saved:</h2>
+ 
+                 <ul>
+                      <% @driver.errors.full_messages.each do |msg| %>
+                      <p><font color="red"> <%= msg %></font></p>
+                      <% end %>
+                 </ul>
+                 </div>
+        <% end %>
+
+<br>
+
+<div>
+  <%= f.label :name %>
+<%= f.text_field :name,:readonly => true %>
+</div>
+<br>
+
+<div>
+  <%= f.label :delivery %>
+
+<%= f.text_field :delivery,:readonly => true %>
+</div>
+<br>
+
+<div>Payment for Deliveries
+  <input type="text" name="payment" value="<%= @driver.payment %>" readonly>
+</div>
+<br>
+<div><strong>Pay for delivery:</strong>&nbsp;
+<%= f.radio_button :pay, 'Paid' %> 
+  <%= label :pay_paid, 'Paid' %>
+  <%= f.radio_button :pay, 'Not Paid', :checked => true %>
+  <%= label :pay_notpaid, 'Not Paid' %>
+ </div><br>
+<br>
+
+<div>
+<%= f.submit "Submit Query" %>
+</div>
+<% end %>
+
+</center>

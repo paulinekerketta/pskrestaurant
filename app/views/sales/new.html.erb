@@ -1,0 +1,63 @@
+<h1>New Sales Entry</h1>
+
+
+
+<font size="4" color="red"><%= flash[:message] %></font><br>
+<%= form_for @sale do |f| %>
+
+<% if @sale.errors.any? %>
+  <div id="error_explanation" class="field_with_errors">
+    <h2><%= pluralize(@sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
+ 
+    <ul>
+    <% @sale.errors.full_messages.each do |msg| %>
+     <p><font color="red"> <%= msg %></font></p>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+<br>
+<div>
+  <%= f.label :out_sales %>
+<%= f.text_field :out_sales, :value => @driver,:readonly => true  %>
+</div>
+<br>
+
+<div>
+  <%= f.label :out_collection %>
+<%= f.text_field :out_collection, :value => @collection,:readonly => true  %>
+</div>
+<br>
+
+<div>
+  <%= f.label :in_sales %>
+<%= f.text_field :in_sales %>
+</div>
+<br>
+
+<div>
+  <%= f.label :in_collection %>
+<%= f.text_field :in_collection %>
+</div>
+<br>
+
+<div>
+<%= f.label :day %>
+<%= f.text_field :day, :value => Time.now.day,:readonly => true  %>
+</div><br>
+
+<div>
+<%= f.label :month %>
+<%= f.text_field :month, :value => Time.now.month,:readonly => true  %>
+</div></br
+
+<br>
+<div>
+<%= f.submit "Submit Query" %>
+</div>
+
+<% end %>
+</center>

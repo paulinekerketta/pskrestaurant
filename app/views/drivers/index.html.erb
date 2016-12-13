@@ -1,0 +1,36 @@
+
+<h2><b>Driver's Index Page</b></h2>
+
+
+<h4><%= link_to "New Entry", new_driver_path, :class => 'navbar-link'  %></h4>
+<br>
+<p>
+
+<%= form_tag(drivers_path, method: :get) do %>
+
+<div>Select Day
+ <%= select_tag :search_day, options_for_select(1..30,5) %></div><br>
+<div>Select Month
+ <%= select_tag :search_month, options_for_select(1..12,5) %></div><br>
+ <%= submit_tag 'Submit ', name: nil %>
+
+<% end %>
+</p>
+ <% @drivers.each do |driver| %>
+
+<br>
+<p>
+   <strong>Name: </strong> <%= driver.name %><br />
+   <strong>No. Of Deliveries made :</strong> <%= driver.delivery %><br />
+   <strong>Pay Earned for the day :</strong> <%= driver.payment %><br />
+   <strong>Pay :</strong> <%= driver.pay %><br />
+   <strong>Date :</strong> <%= driver.day %>.<%= driver.month %><br />
+   
+   <p><%= link_to "Cashout", edit_driver_path(driver), :class => 'navbar-link'  %></p>
+   
+   
+</p>
+
+
+<hr />
+<% end %>

@@ -1,0 +1,29 @@
+
+
+<h2><b>Company Account Log</b></h2>
+
+<br>
+<h4><%= link_to "New Entry", new_log_path, :class => 'navbar-link'  %></h4>
+<br>
+<p>
+
+<%= form_tag(logs_path, method: :get) do %>
+
+<div>Select Day
+ <%= select_tag :search_day, options_for_select(1..30,5) %></div><br>
+<div>Select Month
+ <%= select_tag :search_month, options_for_select(1..12,5) %></div><br>
+ <%= submit_tag 'Submit ', name: nil %>
+
+<% end %>
+</p>
+ <% @logs.each do |log| %>
+ <br>
+<strong>Profit Report</strong>
+<p><strong>Date: <%= log.day %>.<%= log.month %></strong></p>
+<p>
+   <strong>Profit(in £) </strong> <%= log.profit %><br />  
+      
+   <% end %>
+</p>
+<hr />
